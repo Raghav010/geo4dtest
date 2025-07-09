@@ -505,7 +505,8 @@ def run_inference(args, gpu_num, gpu_no):
             torch.cuda.empty_cache()
         
         
-
+        print("Emptying GPU cache")
+        torch.cuda.empty_cache()
 
         scene = post_optimization(view_list, pred_list, config.postprocess, conf_optimize=True, init_method='group', lr=0.03, opt_raydir=True if use_raymap else False, intrinsics=intrinsics)
 
@@ -533,6 +534,9 @@ def run_inference(args, gpu_num, gpu_no):
         scene.save_conf_maps(f'{save_dir}/{seq}')
         scene.save_init_conf_maps(f'{save_dir}/{seq}')
         scene.save_rgb_imgs(f'{save_dir}/{seq}')
+
+        print("Emptying GPU cache")
+        torch.cuda.empty_cache()
 
 
 from utils.rays import cameras_from_plucker
