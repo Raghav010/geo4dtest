@@ -501,7 +501,8 @@ def run_inference(args, gpu_num, gpu_no):
                 pred_pts['traj'] = traj
 
             pred_list.append(pred_pts)
-            # torch.cuda.empty_cache()
+            print("Emptying GPU cache")
+            torch.cuda.empty_cache()
         
         
 
